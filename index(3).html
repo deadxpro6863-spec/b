@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>For Manisa 💗 | From Manav</title>
+<style>
+:root{
+  --pink:#ff6fae;--rose:#ff3f86;--purple:#7c4dff;--cream:#fff7fb;
+  --ink:#351b36;--glass:rgba(255,255,255,.16);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;min-height:100vh;font-family:system-ui,-apple-system,Segoe UI,sans-serif;
+  color:white;background:
+  radial-gradient(circle at 15% 10%,#ff8fc455,transparent 28%),
+  radial-gradient(circle at 90% 20%,#8b6cff55,transparent 30%),
+  linear-gradient(135deg,#180d2c,#32134a 45%,#170b2b);
+  overflow-x:hidden;
+}
+#confetti{position:fixed;inset:0;pointer-events:none;z-index:50;overflow:hidden}
+.confetti-piece{position:absolute;top:-20px;width:9px;height:15px;border-radius:2px;animation:fall linear forwards}
+@keyframes fall{to{transform:translate3d(var(--x),110vh,0) rotate(720deg);opacity:.1}}
+#balloons{position:fixed;inset:0;pointer-events:none;z-index:1;overflow:hidden}
+.balloon{position:absolute;bottom:-90px;width:34px;height:44px;border-radius:50% 50% 46% 46%;
+ animation:floatUp linear infinite;filter:drop-shadow(0 8px 10px #0004)}
+.balloon:after{content:"";position:absolute;width:1px;height:55px;background:#ffffff88;left:50%;top:42px}
+@keyframes floatUp{from{transform:translateY(0) translateX(0)}to{transform:translateY(-125vh) translateX(var(--drift))}}
+main{position:relative;z-index:2;max-width:1000px;margin:auto}
+nav{
+  position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;align-items:center;
+  padding:14px 22px;background:#170b2bcc;backdrop-filter:blur(14px);border-bottom:1px solid #ffffff18
+}
+nav b{letter-spacing:.08em} nav a{color:white;text-decoration:none;opacity:.9}
+.hero{min-height:92vh;display:grid;place-items:center;padding:70px 20px 30px;text-align:center}
+.card{
+  width:min(900px,100%);padding:42px 24px;border:1px solid #ffffff22;border-radius:34px;
+  background:linear-gradient(145deg,#ffffff18,#ffffff09);box-shadow:0 30px 100px #0005;
+  backdrop-filter:blur(16px)
+}
+.badge{display:inline-block;padding:8px 14px;border-radius:999px;background:#ffffff18;border:1px solid #ffffff22;font-size:.8rem;letter-spacing:.15em}
+h1{font-size:clamp(3rem,9vw,7rem);line-height:.95;margin:20px 0 14px;
+  animation:bounceTitle 2.8s ease-in-out infinite;text-shadow:0 10px 40px #ff5ca866}
+@keyframes bounceTitle{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+.subtitle{font-size:clamp(1rem,2.5vw,1.25rem);opacity:.9;max-width:650px;margin:auto}
+.scroll{margin-top:32px;opacity:.7;animation:pulse 1.8s infinite}
+@keyframes pulse{50%{transform:scale(1.08);opacity:1}}
+
+section{padding:70px 20px}
+.section-title{text-align:center;font-size:clamp(2rem,5vw,3.5rem);margin:0 0 12px}
+.section-sub{text-align:center;opacity:.72;margin:0 auto 35px;max-width:650px}
+.cake-wrap{display:grid;place-items:center}
+.cake-button{
+  border:0;background:transparent;color:white;cursor:pointer;position:relative;
+  padding:20px;transition:transform .2s
+}
+.cake-button:hover{transform:scale(1.04)}
+.cake{font-size:8rem;filter:drop-shadow(0 20px 35px #0006)}
+.flame{position:absolute;left:50%;top:13px;transform:translateX(-50%);
+  font-size:2rem;animation:flicker .55s ease-in-out infinite alternate}
+@keyframes flicker{from{transform:translateX(-50%) scale(.9) rotate(-4deg)}to{transform:translateX(-50%) scale(1.15) rotate(4deg)}}
+.tap-hint{opacity:.8;margin-top:-5px}
+.reveal{max-height:0;overflow:hidden;opacity:0;transition:max-height 1s ease,opacity .7s ease}
+.reveal.show{max-height:300px;opacity:1}
+.message{
+  margin:25px auto 0;max-width:700px;padding:25px;border-radius:24px;background:#ffffff12;
+  border:1px solid #ffffff1c
+}
+.gifts{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.gift{
+  border:1px solid #ffffff20;background:#ffffff10;color:white;border-radius:26px;padding:28px;
+  min-height:210px;cursor:pointer;transition:.25s;box-shadow:0 15px 45px #0002
+}
+.gift:hover{transform:translateY(-7px) rotate(-1deg);background:#ffffff18}
+.gift .emoji{font-size:4rem}.gift h3{margin:10px 0 6px}
+.gift-note{display:none;margin-top:14px;padding:14px;border-radius:15px;background:#0002}
+.gift.open .gift-note{display:block;animation:pop .4s ease}
+@keyframes pop{from{transform:scale(.8);opacity:0}to{transform:scale(1);opacity:1}}
+
+.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.feature{padding:25px;border-radius:24px;background:#ffffff0e;border:1px solid #ffffff17}
+.feature .icon{font-size:2.4rem}.feature p{opacity:.75;line-height:1.6}
+
+.photos{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px}
+.photo{
+  border-radius:25px;overflow:hidden;background:#ffffff10;border:1px solid #ffffff20;
+  box-shadow:0 18px 45px #0003;opacity:0;transform:translateY(45px) scale(.97);
+  transition:opacity .9s ease,transform .9s ease
+}
+.photo.visible{opacity:1;transform:none}
+.photo-art{height:260px;display:grid;place-items:center;font-size:5rem;
+  background:linear-gradient(135deg,#ff6fae55,#8f6dff55)}
+.photo figcaption{padding:16px}.photo figcaption b{display:block;margin-bottom:5px}.photo figcaption span{opacity:.65}
+
+.wishes{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.panel{padding:25px;border-radius:25px;background:#ffffff10;border:1px solid #ffffff18}
+textarea,input{width:100%;padding:13px 14px;border-radius:14px;border:1px solid #ffffff22;background:#0002;color:white;outline:none;margin:8px 0}
+button.primary{border:0;border-radius:999px;padding:12px 20px;background:linear-gradient(90deg,var(--pink),var(--purple));color:white;font-weight:700;cursor:pointer}
+.wish-list{display:grid;gap:10px;margin-top:15px}.wish{padding:13px;border-radius:15px;background:#ffffff0d}
+footer{text-align:center;padding:55px 20px 80px;opacity:.8}
+.heart{display:inline-block;animation:heart 1.2s infinite}@keyframes heart{50%{transform:scale(1.25)}}
+
+@media(max-width:700px){.wishes{grid-template-columns:1fr}.card{padding:34px 18px}.cake{font-size:6rem}}
+</style>
+</head>
+<body>
+<div id="confetti"></div>
+<div id="balloons"></div>
+
+<nav><b>M ✦ M</b><a href="#surprise">Your surprise ↓</a></nav>
+
+<main>
+<section class="hero">
+  <div class="card">
+    <span class="badge">16 AUGUST • A LITTLE SURPRISE</span>
+    <h1>Happy Birthday,<br>Manisa 💗</h1>
+    <p class="subtitle">A tiny corner of the internet made just for you — because some people deserve more than a normal birthday wish.</p>
+    <div class="scroll">↓ scroll for your surprise ↓</div>
+  </div>
+</section>
+
+
+<section id="music">
+  <div class="card">
+    <span class="badge">🎵 BIRTHDAY SOUNDTRACK</span>
+    <h2 class="section-title">A song for your day 💗</h2>
+    <p class="section-sub">Tap anywhere on the page or press play — the music starts after your first interaction.</p>
+    <audio id="birthdayAudio" controls preload="auto" style="width:min(620px,100%);margin-top:14px;">
+      <source src="birthday_song.mp3" type="audio/mpeg">
+    </audio>
+  </div>
+</section>
+
+<section id="surprise">
+  <h2 class="section-title">First… make a wish 🎂</h2>
+  <p class="section-sub">Tap the cake. Something special happens when you do.</p>
+  <div class="cake-wrap">
+    <button class="cake-button" id="cakeBtn" aria-label="Cut the birthday cake">
+      <div class="flame" id="flame">🔥</div>
+      <div class="cake">🎂</div>
+    </button>
+    <div class="tap-hint" id="tapHint">Tap the cake to cut it ✨</div>
+    <div class="reveal" id="cakeReveal">
+      <div class="message">
+        <h2>🎉 Cake cut! 🎉</h2>
+        <p>Happy Birthday, Manisa! May this year bring you lots of smiles, beautiful moments and all the little things that make you happy. 💗</p>
+        <p><b>— Manav</b></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2 class="section-title">A few little things 💐</h2>
+  <p class="section-sub">The kind of details that make someone unforgettable.</p>
+  <div class="features">
+    <div class="feature"><div class="icon">😊</div><h3>Your smile</h3><p>The kind that can make an ordinary moment feel a little brighter.</p></div>
+    <div class="feature"><div class="icon">✨</div><h3>Your eyes</h3><p>Definitely one of those details that people remember.</p></div>
+    <div class="feature"><div class="icon">🌸</div><h3>Your hair</h3><p>Part of that effortlessly cute vibe you somehow have.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2 class="section-title">Open only if you're curious 🎁</h2>
+  <p class="section-sub">There might be a note hiding inside.</p>
+  <div class="gifts">
+    <button class="gift"><div class="emoji">🎁</div><h3>Little secret</h3><div class="gift-note">Okay… you're officially one of my favourite people. Don't let it get to your head 😌💗</div></button>
+    <button class="gift"><div class="emoji">🧁</div><h3>Birthday joke</h3><div class="gift-note">Why did the birthday cake go to school? Because it wanted to be a smartie. 😂</div></button>
+  </div>
+</section>
+
+<section>
+  <h2 class="section-title">Little memories 📸</h2>
+  <p class="section-sub">These cards gently appear as you scroll. Replace the emoji art with your favourite photos whenever you want.</p>
+  <div class="photos">
+    <figure class="photo"><div class="photo-art">🌷</div><figcaption><b>That smile</b><span>A moment worth keeping.</span></figcaption></figure>
+    <figure class="photo"><div class="photo-art">✨</div><figcaption><b>Good times</b><span>More memories to come.</span></figcaption></figure>
+    <figure class="photo"><div class="photo-art">💗</div><figcaption><b>One more chapter</b><span>16 August — your day.</span></figcaption></figure>
+  </div>
+</section>
+
+
+
+<section>
+  <h2 class="section-title">Birthday Wishes 💌</h2>
+  <p class="section-sub">A few wishes made especially for Manisa.</p>
+  <div class="features">
+    <div class="feature"><div class="icon">🌷</div><h3>More smiles</h3><p>May your days be filled with the kind of moments that make you smile without even trying.</p></div>
+    <div class="feature"><div class="icon">✨</div><h3>Beautiful memories</h3><p>May this year give you countless little memories worth keeping forever.</p></div>
+    <div class="feature"><div class="icon">💗</div><h3>Always be you</h3><p>Stay the same lovely, funny and genuinely special person you are.</p></div>
+  </div>
+</section>
+
+<footer>
+  Made with a little too much effort and a lot of good vibes <span class="heart">💗</span><br>
+  <small>For Manisa • from Manav</small>
+</footer>
+</main>
+
+<script>
+
+const birthdayAudio = document.getElementById('birthdayAudio');
+function startBirthdayMusic(){
+  if (birthdayAudio && birthdayAudio.paused) {
+    birthdayAudio.play().catch(()=>{});
+  }
+  document.removeEventListener('pointerdown', startBirthdayMusic);
+}
+document.addEventListener('pointerdown', startBirthdayMusic, {once:true});
+const confetti=document.getElementById('confetti');
+const colors=['#ff6fae','#ffd166','#7c4dff','#5eead4','#ffffff','#ff8fab'];
+for(let i=0;i<90;i++){
+  const e=document.createElement('i'); e.className='confetti-piece';
+  e.style.left=Math.random()*100+'vw';
+  e.style.background=colors[Math.floor(Math.random()*colors.length)];
+  e.style.setProperty('--x',(Math.random()*240-120)+'px');
+  e.style.animationDuration=(3+Math.random()*5)+'s';
+  e.style.animationDelay=(Math.random()*2)+'s';
+  e.style.transform=`rotate(${Math.random()*360}deg)`;
+  confetti.appendChild(e);
+}
+setTimeout(()=>confetti.innerHTML='',9000);
+
+const balloons=document.getElementById('balloons');
+for(let i=0;i<12;i++){
+  const b=document.createElement('div'); b.className='balloon';
+  b.style.left=Math.random()*100+'vw';
+  b.style.background=colors[i%colors.length];
+  b.style.animationDuration=(11+Math.random()*12)+'s';
+  b.style.animationDelay=(-Math.random()*18)+'s';
+  b.style.setProperty('--drift',(Math.random()*160-80)+'px');
+  balloons.appendChild(b);
+}
+
+document.getElementById('cakeBtn').addEventListener('click',()=>{
+  document.getElementById('flame').textContent='💨';
+  document.getElementById('tapHint').textContent='Wish made. Cake cut! 🎉';
+  document.getElementById('cakeReveal').classList.add('show');
+  for(let i=0;i<45;i++){
+    const e=document.createElement('i'); e.className='confetti-piece';
+    e.style.left='50vw'; e.style.top='45vh';
+    e.style.background=colors[Math.floor(Math.random()*colors.length)];
+    e.style.setProperty('--x',(Math.random()*600-300)+'px');
+    e.style.animationDuration=(1.2+Math.random()*1.5)+'s';
+    confetti.appendChild(e);
+  }
+  setTimeout(()=>confetti.innerHTML='',3500);
+});
+
+document.querySelectorAll('.gift').forEach(g=>g.addEventListener('click',()=>g.classList.toggle('open')));
+
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});
+},{threshold:.15});
+document.querySelectorAll('.photo').forEach(p=>observer.observe(p));
+
+
+</script>
+</body>
+</html>
